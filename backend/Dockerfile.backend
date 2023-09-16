@@ -1,0 +1,18 @@
+# First Stage - Build server 
+FROM oven/bun:latest as build-stage
+
+WORKDIR /dist
+
+COPY . .
+
+RUN bun install
+RUN bun build ./src/index.ts --compile --outfile server
+
+# Second Stage - Reduced Image Size
+FROM oven/bun:latest
+
+WORKDIR /app
+
+COPY --from=build-stage /dist/server ./server
+
+CMD ["./server"]

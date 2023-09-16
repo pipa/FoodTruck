@@ -1,0 +1,17 @@
+{
+  "name": "food-trucks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Luis Matute <luis.matute@me.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up"
+  }
+}
